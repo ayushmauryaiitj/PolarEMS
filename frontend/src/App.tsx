@@ -44,6 +44,7 @@ export function App() {
   const [energyFlow, setEnergyFlow] = React.useState<EnergyFlowResponse | null>(null);
   const [alerts, setAlerts] = React.useState<any[]>([]);
   const [currentHour, setCurrentHour] = React.useState<number>(12);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     async function init() {
@@ -122,7 +123,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#070b12] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-800 dark:selection:text-cyan-200 transition-colors duration-150">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070b12] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-800 dark:selection:text-cyan-200 transition-colors duration-150 print:bg-white print:min-h-0 print:block">
       <Navbar
         scenarios={scenarios}
         selectedScenarioId={selectedScenarioId}
@@ -131,16 +132,19 @@ export function App() {
         onSelectStrategy={setSelectedStrategy}
         systemStatus={systemStatus}
         backendOnline={backendOnline}
+        onToggleMobileSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
       />
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 min-h-0 relative print:block print:min-h-0">
         <Sidebar
           activeTab={activeTab}
           onSelectTab={setActiveTab}
           activeAlertCount={alerts.length}
+          isMobileOpen={isMobileSidebarOpen}
+          onCloseMobile={() => setIsMobileSidebarOpen(false)}
         />
 
-        <main className="flex-1 p-4 lg:p-6 overflow-y-auto max-w-7xl mx-auto w-full">
+        <main className="flex-1 min-w-0 overflow-x-hidden p-3.5 sm:p-5 lg:p-6 max-w-7xl mx-auto w-full print:p-0 print:m-0 print:max-w-none print:w-full print:overflow-visible">
           {activeTab === 'overview' && (
             <OverviewView
               scenario={activeScenario}

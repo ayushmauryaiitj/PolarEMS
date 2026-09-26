@@ -10,7 +10,8 @@ import {
   Battery, 
   Flame, 
   Zap, 
-  ShieldCheck
+  ShieldCheck,
+  Activity
 } from 'lucide-react';
 import { ScenarioMeta, StrategyName, EnergyFlowResponse } from '../../types';
 import { useTheme } from '../../context/ThemeContext';
@@ -69,156 +70,156 @@ export const EnergyFlowView: React.FC<EnergyFlowViewProps> = ({
   const isBatCharging = batChargeKw > 0.1;
 
   return (
-    <div className="space-y-6">
-      {/* Top SCADA Control Header */}
-      <div className="bg-white dark:bg-[#0e1524]/90 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-none backdrop-blur flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-colors">
+    <div className="space-y-5">
+      {/* 1. SCADA CONTROL BAR */}
+      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0a0f1d] p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.8)] animate-pulse" />
-            <h2 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-              Interactive Microgrid Energy Flow
+            <span className="p-1.5 rounded-lg bg-cyan-50 dark:bg-cyan-950/80 border border-cyan-200 dark:border-cyan-600/40 text-cyan-700 dark:text-cyan-400">
+              <Activity className="w-4 h-4" />
+            </span>
+            <h2 className="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100 font-sans">
+              Interactive Microgrid SCADA Energy Flow
             </h2>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-300 dark:border-cyan-800/40 text-cyan-800 dark:text-cyan-300">
-              SCADA Bus Model
+            <span className="px-2 py-0.5 rounded text-[10px] font-sans font-bold bg-cyan-100 dark:bg-cyan-950/80 border border-cyan-300 dark:border-cyan-700/60 text-cyan-800 dark:text-cyan-300">
+              400V AC 3Φ BUS
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-3">
-            <span>Scenario: <strong className="text-slate-800 dark:text-slate-200">{scenario.name}</strong></span>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex flex-wrap items-center gap-2 font-sans">
+            <span>Scenario: <strong className="text-slate-800 dark:text-slate-200">{scenario.name.split(':')[0]}</strong></span>
             <span>•</span>
-            <span>Strategy: <strong className="text-slate-800 dark:text-slate-200">{strategy}</strong></span>
+            <span>Strategy: <strong className="text-cyan-700 dark:text-cyan-300">{strategy}</strong></span>
           </p>
         </div>
 
-        {/* Bus Power Balance Indicator */}
-        <div className="flex items-center gap-3 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 font-mono text-xs">
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className={`w-4 h-4 ${isBalanced ? 'text-emerald-500 dark:text-emerald-400' : 'text-amber-500 dark:text-amber-400'}`} />
-            <span className="text-slate-600 dark:text-slate-400">Power Balance:</span>
-          </div>
-          <span className={`font-bold tabular-nums ${isBalanced ? 'text-emerald-700 dark:text-emerald-300' : 'text-amber-700 dark:text-amber-300'}`}>
-            {isBalanced ? '0.00 kW (STABLE)' : `±${balanceDelta.toFixed(2)} kW`}
+        {/* Bus Power Balance Health Indicator */}
+        <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-[#0d1527] border border-slate-200 dark:border-slate-800 text-xs font-sans">
+          <ShieldCheck className={`w-4 h-4 ${isBalanced ? 'text-emerald-500' : 'text-amber-500'}`} />
+          <span className="text-slate-500 dark:text-slate-400 font-medium">Bus Power Balance:</span>
+          <span className={`font-mono font-bold tabular-nums ${isBalanced ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-700 dark:text-amber-400'}`}>
+            {isBalanced ? '0.00 kW (CONSERVED)' : `±${balanceDelta.toFixed(2)} kW`}
           </span>
         </div>
       </div>
 
-      {/* Main SCADA Interactive SVG Canvas */}
-      <div className="bg-slate-50 dark:bg-[#0a0f1d] rounded-2xl border border-slate-200 dark:border-slate-800/80 p-6 shadow-sm dark:shadow-2xl relative overflow-hidden transition-colors">
-        <div className="absolute inset-0 bg-polar-grid opacity-20 dark:opacity-30 pointer-events-none" />
+      {/* 2. MAIN SCADA VISUAL DISPLAY (The Visual Centerpiece) */}
+      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#070b16] p-5 lg:p-6 shadow-xs relative overflow-hidden">
+        <div className="absolute inset-0 bg-polar-grid opacity-30 pointer-events-none" />
 
-        {/* Top Asset Cards Grid Overlay */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10 mb-8">
-          {/* Solar PV Asset */}
+        {/* Top 4 Generation/Storage Assets */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 relative z-10 mb-6">
+          {/* Solar PV Block */}
           <div className={`p-4 rounded-xl border transition-all ${
             isSolarActive 
-              ? 'bg-cyan-50/70 dark:bg-cyan-950/20 border-cyan-400 dark:border-cyan-500/40 shadow-sm' 
-              : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800/80'
+              ? 'bg-cyan-50/70 dark:bg-cyan-950/30 border-cyan-400 dark:border-cyan-500/50 shadow-xs' 
+              : 'bg-slate-50/70 dark:bg-[#0a0f1d] border-slate-200 dark:border-slate-800/80'
           }`}>
-            <div className="flex items-center justify-between text-xs font-mono mb-1">
-              <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-                <Sun className="w-4 h-4 text-cyan-600 dark:text-cyan-400" /> Solar PV
+            <div className="flex items-center justify-between text-xs font-sans mb-1">
+              <span className="text-slate-700 dark:text-slate-200 flex items-center gap-1.5 font-semibold">
+                <Sun className="w-4 h-4 text-cyan-600 dark:text-cyan-400" /> Solar PV Array
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400">100 kWp</span>
+              <span className="text-[11px] font-mono tabular-nums text-slate-500 dark:text-slate-400">100 kWp</span>
             </div>
-            <div className="text-2xl font-mono tabular-nums font-bold text-cyan-700 dark:text-cyan-300">
-              {solarKw.toFixed(1)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">kW</span>
+            <div className="text-2xl font-mono tabular-nums font-bold text-cyan-700 dark:text-cyan-300 mt-1">
+              {solarKw.toFixed(1)} <span className="text-xs font-sans font-normal text-slate-400">kW</span>
             </div>
-            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-1 flex justify-between">
-              <span>Status:</span>
-              <span className={isSolarActive ? 'text-cyan-700 dark:text-cyan-400 font-semibold' : 'text-slate-500 dark:text-slate-400'}>
-                {isSolarActive ? 'GENERATING' : 'NIGHT / DORMANT'}
+            <div className="text-xs font-sans mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-800/80 flex justify-between">
+              <span className="text-slate-500 dark:text-slate-400">State:</span>
+              <span className={isSolarActive ? 'text-cyan-700 dark:text-cyan-400 font-semibold' : 'text-slate-400'}>
+                {isSolarActive ? 'Active Generation' : 'Night / Dormant'}
               </span>
             </div>
           </div>
 
-          {/* Wind Turbine Asset */}
+          {/* Wind Turbine Block */}
           <div className={`p-4 rounded-xl border transition-all ${
             isWindActive 
-              ? 'bg-blue-50/70 dark:bg-blue-950/20 border-blue-400 dark:border-blue-500/40 shadow-sm' 
-              : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800/80'
+              ? 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-400 dark:border-blue-500/50 shadow-xs' 
+              : 'bg-slate-50/70 dark:bg-[#0a0f1d] border-slate-200 dark:border-slate-800/80'
           }`}>
-            <div className="flex items-center justify-between text-xs font-mono mb-1">
-              <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-                <Wind className="w-4 h-4 text-blue-600 dark:text-blue-400" /> Wind Turbine
+            <div className="flex items-center justify-between text-xs font-sans mb-1">
+              <span className="text-slate-700 dark:text-slate-200 flex items-center gap-1.5 font-semibold">
+                <Wind className="w-4 h-4 text-blue-600 dark:text-blue-400" /> Wind Turbines
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400">150 kW</span>
+              <span className="text-[11px] font-mono tabular-nums text-slate-500 dark:text-slate-400">150 kW</span>
             </div>
-            <div className="text-2xl font-mono tabular-nums font-bold text-blue-700 dark:text-blue-300">
-              {windKw.toFixed(1)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">kW</span>
+            <div className="text-2xl font-mono tabular-nums font-bold text-blue-700 dark:text-blue-300 mt-1">
+              {windKw.toFixed(1)} <span className="text-xs font-sans font-normal text-slate-400">kW</span>
             </div>
-            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-1 flex justify-between">
-              <span>Status:</span>
-              <span className={isWindActive ? 'text-blue-700 dark:text-blue-400 font-semibold' : 'text-slate-500 dark:text-slate-400'}>
-                {isWindActive ? 'ONLINE' : 'LOW WIND'}
+            <div className="text-xs font-sans mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-800/80 flex justify-between">
+              <span className="text-slate-500 dark:text-slate-400">State:</span>
+              <span className={isWindActive ? 'text-blue-700 dark:text-blue-400 font-semibold' : 'text-slate-400'}>
+                {isWindActive ? 'Rotor Spinning' : 'Sub-Cut-In Lull'}
               </span>
             </div>
           </div>
 
-          {/* BESS Battery Storage Asset */}
+          {/* Li-ion BESS Block */}
           <div className={`p-4 rounded-xl border transition-all ${
             isBatDischarging || isBatCharging 
-              ? 'bg-emerald-50/70 dark:bg-emerald-950/20 border-emerald-400 dark:border-emerald-500/40 shadow-sm' 
-              : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800/80'
+              ? 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-500/50 shadow-xs' 
+              : 'bg-slate-50/70 dark:bg-[#0a0f1d] border-slate-200 dark:border-slate-800/80'
           }`}>
-            <div className="flex items-center justify-between text-xs font-mono mb-1">
-              <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-                <Battery className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> BESS (200 kWh)
+            <div className="flex items-center justify-between text-xs font-sans mb-1">
+              <span className="text-slate-700 dark:text-slate-200 flex items-center gap-1.5 font-semibold">
+                <Battery className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Li-Ion BESS
               </span>
-              <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300">{socPct.toFixed(0)}% SOC</span>
+              <span className="text-[11px] font-mono font-bold text-emerald-700 dark:text-emerald-400">{socPct.toFixed(0)}% SOC</span>
             </div>
-            <div className="text-2xl font-mono tabular-nums font-bold text-emerald-700 dark:text-emerald-300">
+            <div className="text-2xl font-mono tabular-nums font-bold text-emerald-700 dark:text-emerald-300 mt-1">
               {isBatDischarging ? `-${batDischargeKw.toFixed(1)}` : isBatCharging ? `+${batChargeKw.toFixed(1)}` : '0.0'}{' '}
-              <span className="text-xs font-normal text-slate-500 dark:text-slate-400">kW</span>
+              <span className="text-xs font-sans font-normal text-slate-400">kW</span>
             </div>
-            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-1 flex justify-between">
-              <span>Mode:</span>
-              <span className={isBatDischarging ? 'text-emerald-700 dark:text-emerald-400 font-bold' : isBatCharging ? 'text-cyan-700 dark:text-cyan-400 font-bold' : 'text-slate-500 dark:text-slate-400'}>
-                {isBatDischarging ? 'DISCHARGING' : isBatCharging ? 'CHARGING' : 'STANDBY'}
+            <div className="text-xs font-sans mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-800/80 flex justify-between">
+              <span className="text-slate-500 dark:text-slate-400">Mode:</span>
+              <span className={isBatDischarging ? 'text-emerald-700 dark:text-emerald-400 font-semibold' : isBatCharging ? 'text-cyan-700 dark:text-cyan-400 font-semibold' : 'text-slate-400'}>
+                {isBatDischarging ? 'Discharging' : isBatCharging ? 'Charging' : 'Standby'}
               </span>
             </div>
           </div>
 
-          {/* Diesel GenSet Asset */}
+          {/* Diesel GenSet Block */}
           <div className={`p-4 rounded-xl border transition-all ${
             isDieselActive 
-              ? 'bg-amber-50/70 dark:bg-amber-950/20 border-amber-400 dark:border-amber-500/40 shadow-sm' 
-              : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800/80'
+              ? 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-400 dark:border-amber-500/50 shadow-xs' 
+              : 'bg-slate-50/70 dark:bg-[#0a0f1d] border-slate-200 dark:border-slate-800/80'
           }`}>
-            <div className="flex items-center justify-between text-xs font-mono mb-1">
-              <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
+            <div className="flex items-center justify-between text-xs font-sans mb-1">
+              <span className="text-slate-700 dark:text-slate-200 flex items-center gap-1.5 font-semibold">
                 <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400" /> Diesel GenSet
               </span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400">200 kW</span>
+              <span className="text-[11px] font-mono tabular-nums text-slate-500 dark:text-slate-400">200 kW</span>
             </div>
-            <div className="text-2xl font-mono tabular-nums font-bold text-amber-700 dark:text-amber-300">
-              {dieselKw.toFixed(1)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">kW</span>
+            <div className="text-2xl font-mono tabular-nums font-bold text-amber-700 dark:text-amber-300 mt-1">
+              {dieselKw.toFixed(1)} <span className="text-xs font-sans font-normal text-slate-400">kW</span>
             </div>
-            <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-1 flex justify-between">
-              <span>Status:</span>
-              <span className={isDieselActive ? 'text-amber-700 dark:text-amber-400 font-bold' : 'text-slate-500 dark:text-slate-400'}>
-                {isDieselActive ? 'DISPATCHED' : 'STANDBY'}
+            <div className="text-xs font-sans mt-2 pt-2 border-t border-slate-200/60 dark:border-slate-800/80 flex justify-between">
+              <span className="text-slate-500 dark:text-slate-400">Status:</span>
+              <span className={isDieselActive ? 'text-amber-700 dark:text-amber-400 font-semibold' : 'text-slate-400'}>
+                {isDieselActive ? 'Prime Running' : 'Standby Reserve'}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Dynamic SVG Single-Line Flow Bus Diagram */}
-        <div className="relative z-10 py-6">
-          <svg className="w-full h-48" viewBox="0 0 800 180" fill="none">
-            {/* Central 400V 3-Phase AC Microgrid Bus */}
+        {/* Central SCADA Single-Line Diagram */}
+        <div className="relative z-10 py-4 sm:py-6 overflow-x-auto w-full">
+          <svg className="min-w-[620px] w-full h-44 sm:h-48" viewBox="0 0 800 180" fill="none">
+            {/* Central 400V 3-Phase AC Bus Bar */}
             <rect 
               x="380" 
               y="20" 
               width="40" 
               height="140" 
-              rx="8" 
-              fill={isDark ? '#111827' : '#ffffff'} 
-              stroke={isDark ? '#334155' : '#cbd5e1'} 
-              strokeWidth="2" 
+              rx="6" 
+              fill={isDark ? '#0d1527' : '#ffffff'} 
+              stroke={isDark ? '#38bdf8' : '#0284c7'} 
+              strokeWidth="2.5" 
             />
             <text 
               x="400" 
               y="85" 
-              fill={isDark ? '#94a3b8' : '#475569'} 
+              fill={isDark ? '#38bdf8' : '#0284c7'} 
               fontSize="10" 
               fontFamily="monospace" 
               fontWeight="bold"
@@ -275,108 +276,112 @@ export const EnergyFlowView: React.FC<EnergyFlowViewProps> = ({
           </svg>
         </div>
 
-        {/* Bottom Station Load & Sinks Overlay */}
+        {/* Bottom Station Load Sink Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10 mt-2">
-          {/* Station Load Sink */}
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700/80 flex items-center justify-between shadow-sm">
+          {/* Station Electrical Demand */}
+          <div className="p-4 rounded-xl bg-slate-50/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
+              <div className="w-10 h-10 rounded-lg bg-cyan-50 dark:bg-[#0c1626] border border-cyan-200 dark:border-cyan-600/40 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
                 <Zap className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
-                  Station Load Demand
+                <div className="text-sm font-semibold font-sans text-slate-800 dark:text-slate-200">
+                  Station Electrical Demand
                 </div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
-                  Base Living Quarters + Labs + Thermal Heating
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                  Base Living Quarters + Scientific Labs + Space Heating
                 </div>
               </div>
             </div>
-            <div className="text-right font-mono">
-              <div className="text-2xl tabular-nums font-bold text-slate-900 dark:text-slate-100">{powerServedKw.toFixed(1)} <span className="text-xs text-slate-500 dark:text-slate-400">kW</span></div>
-              <div className={`text-[11px] ${ensKw > 0 ? 'text-rose-600 dark:text-rose-400 font-bold' : 'text-emerald-600 dark:text-emerald-400'}`}>
-                {ensKw > 0 ? `ENS: ${ensKw.toFixed(1)} kW unserved` : '100% Demand Served'}
+            <div className="text-right">
+              <div className="text-2xl font-mono tabular-nums font-bold text-slate-900 dark:text-slate-100">
+                {powerServedKw.toFixed(1)} <span className="text-xs font-sans font-normal text-slate-400">kW</span>
+              </div>
+              <div className={`text-xs font-sans font-medium ${ensKw > 0 ? 'text-rose-600 dark:text-rose-400 font-semibold' : 'text-emerald-700 dark:text-emerald-400'}`}>
+                {ensKw > 0 ? `ENS: ${ensKw.toFixed(1)} kW unserved` : '100% Demand Met'}
               </div>
             </div>
           </div>
 
-          {/* Curtailment / Dump Sink */}
-          <div className="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 flex items-center justify-between shadow-sm">
+          {/* RE Curtailment / Resistive Dump */}
+          <div className="p-4 rounded-xl bg-slate-50/80 dark:bg-[#0a0f1d] border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400">
+              <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-[#0c1626] border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs font-mono font-bold text-slate-800 dark:text-slate-300">
+                <div className="text-sm font-semibold font-sans text-slate-800 dark:text-slate-200">
                   RE Curtailment / Resistive Dump
                 </div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
-                  Thermal sink when generation exceeds BESS charge limits
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                  Surplus thermal absorption when BESS reaches 100% SOC
                 </div>
               </div>
             </div>
-            <div className="text-right font-mono">
-              <div className="text-2xl tabular-nums font-bold text-slate-800 dark:text-slate-300">{curtailKw.toFixed(1)} <span className="text-xs text-slate-500 dark:text-slate-400">kW</span></div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                {curtailKw > 0 ? 'Surplus Dumped' : 'Zero Curtailment'}
+            <div className="text-right">
+              <div className="text-2xl font-mono tabular-nums font-bold text-slate-800 dark:text-slate-200">
+                {curtailKw.toFixed(1)} <span className="text-xs font-sans font-normal text-slate-400">kW</span>
+              </div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 font-sans font-medium">
+                {curtailKw > 0 ? 'Surplus Dump Active' : 'Zero Curtailment'}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 24-Hour Timeline Scrubber Bar */}
-      <div className="bg-white dark:bg-[#0e1524]/90 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm dark:shadow-none space-y-4 transition-colors">
+      {/* 3. 24-HOUR TIMELINE SCRUBBER CONSOLE */}
+      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0a0f1d] p-5 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-[#0d1527] p-1 rounded-lg border border-slate-200 dark:border-slate-800">
               <button
                 onClick={() => onHourChange(Math.max(0, currentHour - 1))}
-                className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer focus-ring"
                 title="Step Backward"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-md bg-cyan-600 hover:bg-cyan-500 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-semibold text-xs font-sans flex items-center gap-1.5 transition-colors cursor-pointer focus-ring"
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                 <span>{isPlaying ? 'PAUSE' : 'PLAY'}</span>
               </button>
               <button
                 onClick={() => onHourChange((currentHour + 1) % 24)}
-                className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer focus-ring"
                 title="Step Forward"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => { setIsPlaying(false); onHourChange(0); }}
-                className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors cursor-pointer focus-ring"
                 title="Reset to T+00"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="flex items-center gap-2 font-mono text-xs">
+            <div className="flex items-center gap-2 text-xs font-sans">
               <span className="text-slate-500 dark:text-slate-400">Timestep:</span>
-              <span className="px-2.5 py-1 rounded bg-cyan-100 dark:bg-cyan-950/80 border border-cyan-300 dark:border-cyan-700/50 text-cyan-800 dark:text-cyan-300 font-bold text-sm tabular-nums">
+              <span className="px-2.5 py-1 rounded bg-cyan-50 dark:bg-cyan-950/80 border border-cyan-200 dark:border-cyan-600/50 text-cyan-800 dark:text-cyan-300 font-bold text-sm font-mono tabular-nums">
                 T+{currentHour < 10 ? `0${currentHour}` : currentHour}:00
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 font-mono text-[11px]">
+          <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs">
             {[0, 6, 12, 18, 23].map((h) => (
               <button
                 key={h}
                 onClick={() => onHourChange(h)}
-                className={`px-2 py-1 rounded transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer focus-ring tabular-nums ${
                   currentHour === h
-                    ? 'bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-950 font-bold'
-                    : 'bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800'
+                    ? 'bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-950 font-bold shadow-xs'
+                    : 'bg-slate-100 dark:bg-[#0d1527] hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 font-medium'
                 }`}
               >
                 T+{h < 10 ? `0${h}` : h}
@@ -394,7 +399,7 @@ export const EnergyFlowView: React.FC<EnergyFlowViewProps> = ({
           className="w-full accent-cyan-600 dark:accent-cyan-400 cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none"
         />
 
-        <div className="flex justify-between text-[10px] font-mono text-slate-500 dark:text-slate-400 px-1">
+        <div className="flex justify-between text-xs font-sans text-slate-500 dark:text-slate-400 px-1">
           <span>T+00:00 (Start)</span>
           <span>T+06:00 (Morning)</span>
           <span>T+12:00 (Solar Peak)</span>

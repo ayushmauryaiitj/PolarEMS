@@ -1,17 +1,96 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   color-scheme: light dark;
+
+  /* PolarEMS Light Theme Tokens */
+  --color-bg: #f4f6f9;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8fafc;
+  --color-surface-muted: #edf2f7;
+  --color-surface-hover: #e2e8f0;
+  --color-border: #e2e8f0;
+  --color-border-subtle: #cbd5e1;
+  --color-border-strong: #94a3b8;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-dim: #64748b;
+  --color-accent: #0891b2;
+  --color-accent-subtle: rgba(8, 145, 178, 0.08);
+
+  /* Semantic Status Tokens (Light Mode - WCAG Compliant >= 4.5:1) */
+  --state-success-bg: #ecfdf5;
+  --state-success-border: #a7f3d0;
+  --state-success-text: #065f46;
+  --state-warning-bg: #fffbeb;
+  --state-warning-border: #fde68a;
+  --state-warning-text: #92400e;
+  --state-danger-bg: #fef2f2;
+  --state-danger-border: #fecaca;
+  --state-danger-text: #991b1b;
+  --state-info-bg: #eff6ff;
+  --state-info-border: #bfdbfe;
+  --state-info-text: #1e40af;
+  --state-cyan-bg: #ecfeff;
+  --state-cyan-border: #a5f3fc;
+  --state-cyan-text: #155e75;
+
+  /* Chart Chrome */
+  --chart-grid: #e2e8f0;
+  --chart-text: #64748b;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #cbd5e1;
+  --chart-tooltip-text: #0f172a;
 }
 
 html.dark {
   color-scheme: dark;
-}
 
-html.light {
-  color-scheme: light;
+  /* PolarEMS Dark Theme Tokens (Deep Polar Navy / Control Room) */
+  --color-bg: #050811;
+  --color-surface: #0a0f1d;
+  --color-surface-subtle: #0d1527;
+  --color-surface-muted: #111b32;
+  --color-surface-hover: #16223f;
+  --color-border: rgba(148, 163, 184, 0.12);
+  --color-border-subtle: rgba(148, 163, 184, 0.22);
+  --color-border-strong: rgba(148, 163, 184, 0.4);
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
+  --color-accent: #06b6d4;
+  --color-accent-subtle: rgba(6, 182, 212, 0.12);
+
+  /* Semantic Status Tokens (Dark Mode) */
+  --state-success-bg: rgba(6, 78, 59, 0.35);
+  --state-success-border: rgba(52, 211, 153, 0.35);
+  --state-success-text: #6ee7b7;
+  --state-warning-bg: rgba(120, 53, 15, 0.35);
+  --state-warning-border: rgba(251, 191, 36, 0.35);
+  --state-warning-text: #fcd34d;
+  --state-danger-bg: rgba(127, 29, 29, 0.45);
+  --state-danger-border: rgba(244, 63, 94, 0.4);
+  --state-danger-text: #fca5a5;
+  --state-info-bg: rgba(30, 58, 138, 0.35);
+  --state-info-border: rgba(96, 165, 250, 0.35);
+  --state-info-text: #93c5fd;
+  --state-cyan-bg: rgba(22, 78, 99, 0.35);
+  --state-cyan-border: rgba(34, 211, 238, 0.35);
+  --state-cyan-text: #67e8f9;
+
+  /* Chart Chrome */
+  --chart-grid: #1e293b;
+  --chart-text: #94a3b8;
+  --chart-tooltip-bg: #070d18;
+  --chart-tooltip-border: #334155;
+  --chart-tooltip-text: #f1f5f9;
 }
 
 body {
@@ -19,17 +98,11 @@ body {
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-html.dark body {
-  background-color: #070b12;
-  color: #f1f5f9;
-}
-
-html.light body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Monospace font utility for numbers and telemetry */
@@ -38,28 +111,94 @@ html.light body {
   font-feature-settings: 'tnum' on, 'zero' on;
 }
 
-/* Custom telemetry scrollbar */
+/* Reusable Typography System */
+.telemetry-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: 'tnum' on, 'zero' on;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom telemetry scrollbars */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070b12;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.22);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Accessibility: Standard WCAG 2.2 AA Focus Ring */
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Surface Tier Utilities */
+.scada-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.scada-panel-interactive {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.scada-panel-interactive:hover {
+  border-color: var(--color-border-subtle);
+  background-color: var(--color-surface-subtle);
+}
+
+/* Telemetry Strip */
+.telemetry-strip {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+/* Active Navigation Rail */
+.active-nav-indicator {
+  position: relative;
+}
+.active-nav-indicator::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  background-color: #06b6d4;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
 }
 
 /* Refined Polar SCADA Grid subtle backdrop */
 .bg-polar-grid {
   background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+
+html.dark .bg-polar-grid {
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -85,17 +224,30 @@ html.light body {
   animation: flowDash 0.75s linear infinite reverse;
 }
 
+/* Table container with horizontal scroll handling */
+.table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 0.5rem;
+}
+
 /* ========================================================= */
 /* Print Stylesheet for Formal A4 Technical Audit Documents  */
 /* ========================================================= */
 @media print {
   @page {
-    size: A4 portrait;
-    margin: 16mm 18mm 16mm 18mm;
+    size: A4;
+    margin: 14mm 15mm;
   }
 
   :root {
     color-scheme: light;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   html, body {
@@ -109,11 +261,8 @@ html.light body {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 
-  /* Hide web dashboard UI navigation, chrome, sidebars, headers, and scrollbars */
   header, 
   aside, 
   nav, 
@@ -122,7 +271,6 @@ html.light body {
     display: none !important;
   }
 
-  /* Ensure main and root wrappers expand fully without clipping or scrolling */
   #root, 
   #root > div, 
   main {
@@ -138,7 +286,6 @@ html.light body {
     min-height: auto !important;
   }
 
-  /* Page break utilities */
   .print-page-break-after {
     page-break-after: always !important;
     break-after: page !important;
@@ -149,12 +296,22 @@ html.light body {
     break-before: page !important;
   }
 
-  .print-avoid-break {
+  .print-avoid-break,
+  .break-inside-avoid {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  /* Technical Table Print Enhancements */
+  .break-after-avoid {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
   table {
     border-collapse: collapse !important;
     width: 100% !important;
@@ -174,4 +331,3 @@ html.light body {
     break-inside: avoid !important;
   }
 }
-
