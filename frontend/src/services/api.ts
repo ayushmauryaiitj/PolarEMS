@@ -7,7 +7,8 @@ import {
   EnergyFlowResponse
 } from '../types';
 
-const API_BASE = 'http://localhost:8000/api';
+const rawBase = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE = `${rawBase.replace(/\/+$/, '')}/api`;
 
 export async function fetchHealth(): Promise<{ status: string }> {
   const res = await fetch(`${API_BASE}/health`);
