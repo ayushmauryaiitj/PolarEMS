@@ -1,0 +1,40 @@
+# Python
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+
+# Node & Build artifacts
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+build/
+
+# Environment, secrets & local configs
+.env
+.env.*
+*.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+*.log
+*.tmp
+*.temp
+
+# GAMS temporary/output files
+*.lst
+*.put
+
+# Scratch & Large Raw Binaries
+scratch/
+*.h5

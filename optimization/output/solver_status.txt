@@ -1,0 +1,3 @@
+model_status=        1.00
+solver_status=        1.00
+obj_val=805811.7500

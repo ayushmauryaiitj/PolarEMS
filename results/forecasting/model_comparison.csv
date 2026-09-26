@@ -1,0 +1,10 @@
+target,model,val_MAE,val_RMSE,val_R2,val_MAPE,test_MAE,test_RMSE,test_R2,test_MAPE
+load_kw,Linear Regression,4.0076,4.9887,0.9581,1.95,4.6501,5.8801,0.9307,2.39
+load_kw,Random Forest,3.5818,4.4902,0.9661,1.75,3.8799,4.8603,0.9527,2.01
+load_kw,HistGradientBoosting,3.701,4.6535,0.9635,1.82,4.8968,6.0276,0.9272,2.56
+solar_kw,Linear Regression,0.563,0.6962,0.9932,16.24,1.2242,1.328,0.4261,62.64
+solar_kw,Random Forest,0.0235,0.0627,0.9999,0.62,0.0056,0.0182,0.9999,1.03
+solar_kw,HistGradientBoosting,0.0373,0.0838,0.9999,1.08,0.0101,0.0231,0.9998,1.48
+wind_kw,Linear Regression,2.827,6.7272,0.8595,75.06,4.3823,8.7976,0.8534,38.09
+wind_kw,Random Forest,0.0871,0.3142,0.9997,1.1,0.2339,0.5158,0.9995,1.38
+wind_kw,HistGradientBoosting,0.1813,0.8838,0.9976,1.46,0.4628,1.5246,0.9956,1.65

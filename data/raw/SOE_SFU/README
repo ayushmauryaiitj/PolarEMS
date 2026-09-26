@@ -1,0 +1,63 @@
+Title: Monthly electricity usage at Australian Antarctic Stations
+
+Authors:
+  - GUY RATCLIFFE (TECHNICAL CONTACT)
+  - ROBERT SHEERS (TECHNICAL CONTACT)
+  - JEREMY BONNICE (INVESTIGATOR, DIF AUTHOR)
+
+Owner: Commonwealth of Australia
+
+Citation: Ratcliffe, G., Sheers, R. and Bonnice, J. (2001) Monthly electricity usage at Australian Antarctic Stations, Ver. 1,  <em>Australian Antarctic Data Centre</em> - <a href="http://dx.doi.org/doi:10.26179/5d38f549336a7">doi:10.26179/5d38f549336a7</a>, Accessed: 2020-07-02
+
+Revision Date: 2019-07-25
+
+Metadata URL: https://data.aad.gov.au/metadata/records/SOE_SFU
+
+Dataset API URL: https://data.aad.gov.au/s3/api/bucket/datasets/science/SOE_SFU?export=json
+
+Abstract: These data are no longer archived in the Australian Antarctic Data Centre.  These data cover a period of January 1993 to February 2016.
+
+INDICATOR DEFINITION
+The amount of electricity (kWh) used at Casey, Davis, Mawson and Macquarie Island stations as measured on a monthly basis and reported in the monthly reports from the Station Plant Inspectors to the Kingston (Head Office) Mechanical Supervisor.
+
+TYPE OF INDICATOR
+There are three types of indicators used in this report:
+1.Describes the CONDITION of important elements of a system;
+2.Show the extent of the major PRESSURES exerted on a system;
+3.Determine RESPONSES to either condition or changes in the condition of a system.
+
+This indicator is one of: PRESSURE
+
+RATIONALE FOR INDICATOR SELECTION
+The amount of electricity used at a station is a reflection of the efficiency of various electrical and systems and the amount of fuel used to generate this electricity.
+
+The amount of fuel used in Antarctica for electricity generation is proportional to environmental impact due to the emissions.
+
+The electricity usage of the station provides an indication of the relative need for electrical power compared with the thermal load of the station.
+
+DESIGN AND STRATEGY FOR INDICATOR MONITORING PROGRAM
+Spatial scale: Australian Antarctic stations: Casey (lat 66 deg 16' 54.5& S, long 110 deg 31' 39.4& E), Davis (lat 68 deg 34' 35.8& S, long 77 deg 58' 02.6& E), Mawson (lat 67 deg 36' 09.7& S, long 62 deg 52' 25.7& E) and Macquarie Island (lat 54 deg 37' 59.9& S, long 158 deg 52' 59.9& E).
+
+Frequency: Monthly reports
+
+Measurement technique: The figures are obtained by direct reading of gauges on the stations on a regular basis.  The data are recorded in the Plant Inspectors monthly reports.
+
+RESEARCH ISSUES
+In the future, it is planned to automate the collection of most of this data.
+
+LINKS TO OTHER INDICATORS
+SOE Indicator 1 - Monthly mean air temperatures at Australian Antarctic stations.
+SOE Indicator 2 - Highest monthly air temperatures at Australian Antarctic Stations
+SOE Indicator 3 - Lowest monthly air temperatures at Australian Antarctic Stations
+SOE Indicator 4 - Monthly mean lower stratospheric temperatures above Australian Antarctic Stations
+SOE Indicator 47 - Number and nature of incidents resulting in environmental impact
+SOE Indicator 48 - Station and ship person days
+SOE Indicator 56 - Monthly fuel usage of the generator sets and boilers
+
+Use Constraints: This data set conforms to the CCBY Attribution License (http://creativecommons.org/licenses/by/4.0/).
+
+Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=SOE_SFU when using these data.
+
+ID: 4947
+Metadata ID: SOE_SFU
+UUID: a073c9a4-09b1-47d1-b010-f0e64f05acbe

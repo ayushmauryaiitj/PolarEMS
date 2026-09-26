@@ -1,0 +1,84 @@
+{
+  "audit_passed": true,
+  "total_rows": 8784,
+  "date_range": {
+    "start": "2020-01-01 00:00:00",
+    "end": "2020-12-31 23:00:00"
+  },
+  "is_regular_1h": true,
+  "duplicate_timestamps": 0,
+  "total_missing_values": 0,
+  "missing_by_column": {
+    "timestamp": 0,
+    "hour": 0,
+    "month": 0,
+    "temperature_c": 0,
+    "wind_speed_ms": 0,
+    "wind_direction_deg": 0,
+    "irradiance_w_m2": 0,
+    "cloud_fraction": 0,
+    "pressure_hpa": 0,
+    "load_kw": 0,
+    "solar_kw": 0,
+    "wind_kw": 0,
+    "hour_sin": 0,
+    "hour_cos": 0,
+    "month_sin": 0,
+    "month_cos": 0
+  },
+  "physical_boundary_violations": {
+    "negative_irradiance": 0,
+    "negative_load": 0,
+    "solar_exceeds_capacity": 0,
+    "solar_negative": 0,
+    "wind_exceeds_capacity": 0,
+    "wind_negative": 0,
+    "invalid_temperature_range": 0,
+    "invalid_pressure_range": 0,
+    "cloud_fraction_out_of_bounds": 0
+  },
+  "summary_statistics": {
+    "load_kw": {
+      "min": 147.32225251502462,
+      "max": 261.67328847448357,
+      "mean": 206.44389410469367,
+      "std": 25.574421401271024
+    },
+    "solar_kw": {
+      "min": 0.0,
+      "max": 77.51988008590529,
+      "mean": 9.290610153756884,
+      "std": 16.282054254664754
+    },
+    "wind_kw": {
+      "min": 0.0,
+      "max": 150.0,
+      "mean": 8.559646253325138,
+      "std": 18.587584146689622
+    },
+    "temperature_c": {
+      "min": -7.937356387867624,
+      "max": 31.772533222273296,
+      "mean": 7.05573397907235,
+      "std": 6.458273782263094
+    },
+    "wind_speed_ms": {
+      "min": 0.0,
+      "max": 18.78134480469367,
+      "mean": 3.6908861483751503,
+      "std": 2.228646656089991
+    },
+    "irradiance_w_m2": {
+      "min": 0.0,
+      "max": 824.1730438963782,
+      "mean": 92.97176721660021,
+      "std": 167.65077306534712
+    },
+    "pressure_hpa": {
+      "min": 943.844822610294,
+      "max": 1038.1211084558824,
+      "mean": 1007.4435244191549,
+      "std": 13.501515951006
+    }
+  }
+}

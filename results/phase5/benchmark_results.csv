@@ -1,0 +1,13 @@
+scenario,strategy,total_load_kwh,re_available_kwh,re_used_kwh,re_curtailment_kwh,re_penetration_pct,diesel_generation_kwh,diesel_fuel_consumed_l,diesel_fuel_remaining_l,hours_diesel_operated,ens_kwh,min_soc_pct,final_soc_pct,battery_throughput_kwh,co2_emissions_kg,operating_cost_usd
+Scenario 1: Normal / High Renewable,Diesel-Only,5038.73,2779.45,0.0,2779.45,0.0,4646.69,1281.67,718.33,24,392.05,0.0,0.0,0.0,3434.88,5842.96
+Scenario 1: Normal / High Renewable,Rule-Based Hybrid,5038.73,2779.45,2779.45,0.0,55.16,2164.29,646.07,1353.93,21,0.0,20.0,20.0,95.0,1731.47,998.8
+Scenario 1: Normal / High Renewable,PolarEMS (Predictive GAMS),5038.73,2779.45,2768.54,0.0,54.95,2148.36,632.09,1367.91,19,0.0,20.0,20.0,172.32,1694.0,979.27
+Scenario 2: Renewable Drought / Restricted Fuel,Diesel-Only,4561.87,22.84,0.0,22.84,0.0,3600.0,1000.0,0.0,20,961.87,0.0,0.0,0.0,2680.0,11118.74
+Scenario 2: Renewable Drought / Restricted Fuel,Rule-Based Hybrid,4561.87,22.84,22.84,0.0,0.5,3600.0,1000.0,0.0,20,844.03,20.0,20.0,95.0,2680.0,9942.44
+Scenario 2: Renewable Drought / Restricted Fuel,PolarEMS (Predictive GAMS),4561.87,22.84,22.78,0.0,0.5,3620.0,1000.0,0.0,19,804.81,20.0,20.0,95.0,2680.0,9550.2
+Scenario 3: High Demand,Diesel-Only,5431.19,685.87,0.0,685.87,0.0,4744.65,1306.16,693.84,24,686.53,0.0,0.0,0.0,3500.52,8824.59
+Scenario 3: High Demand,Rule-Based Hybrid,5431.19,685.87,685.87,0.0,12.63,4433.6,1228.4,771.6,24,216.72,20.0,20.0,95.0,3292.11,4018.58
+Scenario 3: High Demand,PolarEMS (Predictive GAMS),5431.19,685.87,687.27,0.0,12.65,4589.73,1267.43,732.57,24,55.84,20.0,20.0,215.16,3396.72,2470.7
+Scenario 4: Renewable Failure / Storm,Diesel-Only,5038.73,277.94,0.0,277.94,0.0,4646.69,1281.67,218.33,24,392.05,0.0,0.0,0.0,3434.88,5842.96
+Scenario 4: Renewable Failure / Storm,Rule-Based Hybrid,5038.73,277.94,277.94,0.0,5.52,4483.12,1240.78,259.22,24,220.67,20.0,20.0,57.0,3325.29,4071.75
+Scenario 4: Renewable Failure / Storm,PolarEMS (Predictive GAMS),5038.73,277.94,276.85,0.0,5.49,4629.67,1277.42,222.58,24,54.68,20.0,20.0,257.26,3423.48,2470.84

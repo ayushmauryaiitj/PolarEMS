@@ -1,0 +1,26 @@
+{
+  "total_load_energy_kwh": 4542.5896999999995,
+  "renewable_energy_available_kwh": 22.7827,
+  "renewable_energy_used_kwh": 22.7827,
+  "renewable_curtailment_kwh": 0.0,
+  "diesel_generation_kwh": 3620.0,
+  "diesel_fuel_consumed_litres": 1000.0,
+  "minimum_soc": 0.2,
+  "final_soc": 0.2,
+  "total_ens_kwh": 804.807,
+  "hours_diesel_operated": 19,
+  "optimization_objective_value": 805811.75,
+  "solver_status": 1.0,
+  "model_status": 1.0,
+  "validation_checks": {
+    "power_balance_passed": true,
+    "soc_bounds_passed": true,
+    "diesel_limits_passed": true,
+    "fuel_non_negative": true,
+    "ens_non_negative": true,
+    "solar_dispatch_valid": true,
+    "wind_dispatch_valid": true,
+    "no_simultaneous_charge_discharge": true
+  },
+  "all_validation_passed": true
+}

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DIF xmlns="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:dif="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/ http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/dif_v9.9.3.xsd">
+  <Entry_ID>SOE_SFU</Entry_ID>
+  <Entry_Title>Monthly electricity usage at Australian Antarctic Stations</Entry_Title>
+  <Data_Set_Citation>
+    <Dataset_Creator>Ratcliffe, G., Sheers, R. and Bonnice, J.</Dataset_Creator>
+    <Dataset_Title>Monthly electricity usage at Australian Antarctic Stations</Dataset_Title>
+    <Dataset_Series_Name>CAASM Metadata</Dataset_Series_Name>
+    <Dataset_Release_Date>2001-05-18</Dataset_Release_Date>
+    <Dataset_Publisher>Australian Antarctic Data Centre</Dataset_Publisher>
+    <Version>1</Version>
+    <Dataset_DOI>doi:10.26179/5d38f549336a7</Dataset_DOI>
+    <Online_Resource>https://data.aad.gov.au/metadata/records/SOE_SFU</Online_Resource>
+  </Data_Set_Citation>
+  <Personnel>
+    <Role>TECHNICAL CONTACT</Role>
+    <First_Name>GUY</First_Name>
+    <Last_Name>RATCLIFFE</Last_Name>
+    <Contact_Address>
+      <Address>Australian Antarctic Division</Address>
+      <Address>203 Channel Highway</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Personnel>
+    <Role>TECHNICAL CONTACT</Role>
+    <First_Name>ROBERT</First_Name>
+    <Last_Name>SHEERS</Last_Name>
+    <Contact_Address>
+      <Address>Australian Antarctic Division</Address>
+      <Address>203 Channel Highway</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Personnel>
+    <Role>INVESTIGATOR</Role>
+    <Role>DIF AUTHOR</Role>
+    <First_Name>JEREMY</First_Name>
+    <Last_Name>BONNICE</Last_Name>
+    <Contact_Address>
+      <Address>Australian Antarctic Division</Address>
+      <Address>203 Channel Highway</Address>
+      <City>Kingston</City>
+      <Province_or_State>Tasmania</Province_or_State>
+      <Postal_Code>7050</Postal_Code>
+      <Country>Australia</Country>
+    </Contact_Address>
+  </Personnel>
+  <Discipline>
+    <Discipline_Name>EARTH SCIENCE</Discipline_Name>
+  </Discipline>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>HUMAN DIMENSIONS</Topic>
+    <Term>ENVIRONMENTAL IMPACTS</Term>
+    <Variable_Level_1>FOSSIL FUEL BURNING</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>HUMAN DIMENSIONS</Topic>
+    <Term>ENVIRONMENTAL IMPACTS</Term>
+    <Variable_Level_1>INDUSTRIAL EMISSIONS</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>HUMAN DIMENSIONS</Topic>
+    <Term>INFRASTRUCTURE</Term>
+    <Variable_Level_1>BUILDINGS</Variable_Level_1>
+  </Parameters>
+  <Parameters>
+    <Category>EARTH SCIENCE</Category>
+    <Topic>HUMAN DIMENSIONS</Topic>
+    <Term>INFRASTRUCTURE</Term>
+    <Variable_Level_1>ELECTRICITY</Variable_Level_1>
+  </Parameters>
+  <ISO_Topic_Category>STRUCTURE</ISO_Topic_Category>
+  <ISO_Topic_Category>ENVIRONMENT</ISO_Topic_Category>
+  <ISO_Topic_Category>UTILITIES/COMMUNICATIONS</ISO_Topic_Category>
+  <Keyword>ELECTRICITY GENERATED</Keyword>
+  <Keyword>ENERGY GENERATION</Keyword>
+  <Sensor_Name>
+    <Short_Name>VISUAL OBSERVATIONS</Short_Name>
+  </Sensor_Name>
+  <Source_Name>
+    <Short_Name>FIXED OBSERVATION STATIONS</Short_Name>
+  </Source_Name>
+  <Temporal_Coverage>
+    <Start_Date>1993-01-01</Start_Date>
+    <Stop_Date>2016-02-29</Stop_Date>    
+  </Temporal_Coverage>
+  <Data_Set_Progress>COMPLETE</Data_Set_Progress>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-54.6198</Southernmost_Latitude>
+    <Northernmost_Latitude>-54.6198</Northernmost_Latitude>
+    <Westernmost_Longitude>158.8609</Westernmost_Longitude>
+    <Easternmost_Longitude>158.8609</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-66.2818</Southernmost_Latitude>
+    <Northernmost_Latitude>-66.2818</Northernmost_Latitude>
+    <Westernmost_Longitude>110.5276</Westernmost_Longitude>
+    <Easternmost_Longitude>110.5276</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-67.6026</Southernmost_Latitude>
+    <Northernmost_Latitude>-67.6026</Northernmost_Latitude>
+    <Westernmost_Longitude>62.8738</Westernmost_Longitude>
+    <Easternmost_Longitude>62.8738</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Spatial_Coverage>
+    <Southernmost_Latitude>-68.5766</Southernmost_Latitude>
+    <Northernmost_Latitude>-68.5766</Northernmost_Latitude>
+    <Westernmost_Longitude>77.9673</Westernmost_Longitude>
+    <Easternmost_Longitude>77.9673</Easternmost_Longitude>
+  </Spatial_Coverage>
+  <Location>
+    <Location_Category>OCEAN</Location_Category>
+    <Location_Type>SOUTHERN OCEAN</Location_Type>
+    <Location_Subregion1>MACQUARIE ISLAND</Location_Subregion1>
+  </Location>
+  <Location>
+    <Location_Category>CONTINENT</Location_Category>
+    <Location_Type>ANTARCTICA</Location_Type>
+    <Detailed_Location>Casey</Detailed_Location>
+  </Location>
+  <Location>
+    <Location_Category>CONTINENT</Location_Category>
+    <Location_Type>ANTARCTICA</Location_Type>
+    <Detailed_Location>Davis</Detailed_Location>
+  </Location>
+  <Location>
+    <Location_Category>CONTINENT</Location_Category>
+    <Location_Type>ANTARCTICA</Location_Type>
+    <Detailed_Location>Mawson</Detailed_Location>
+  </Location>
+  <Location>
+    <Location_Category>GEOGRAPHIC REGION</Location_Category>
+    <Location_Type>POLAR</Location_Type>
+  </Location>
+  <Quality>The fuel usage of the generator sets provides an indication of the energy requirements of the station.  This is proportional to the mean temperature at the time, but also provides an indication of the success of energy reduction strategies over time.</Quality>
+  <Access_Constraints>A snapshot of data from January 1993 to February 2016 are publicly available for download from the provided URL.</Access_Constraints>
+  <Use_Constraints>This data set conforms to the CCBY Attribution License (http://creativecommons.org/licenses/by/4.0/).
+
+Please follow instructions listed in the citation reference provided at http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=SOE_SFU when using these data.</Use_Constraints>
+  <Data_Set_Language>English</Data_Set_Language>
+  <Originating_Center>Australian Antarctic Division</Originating_Center>
+  <Data_Center>
+    <Data_Center_Name>
+      <Short_Name>AU/AADC</Short_Name>
+      <Long_Name>Australian Antarctic Data Centre, Australia</Long_Name>
+    </Data_Center_Name>
+    <Data_Center_URL>http://data.aad.gov.au</Data_Center_URL>
+    <Personnel>
+      <Role>DATA CENTER CONTACT</Role>
+      <First_Name>DATA OFFICER</First_Name>
+      <Last_Name>AADC</Last_Name>
+      <Email>metadata@aad.gov.au</Email>
+      <Phone>+61 3 6232 3244</Phone>
+      <Fax>+61 3 6232 3351</Fax>
+      <Contact_Address>
+        <Address>Australian Antarctic Division</Address>
+        <Address>203 Channel Highway</Address>
+        <City>Kingston</City>
+        <Province_or_State>Tasmania</Province_or_State>
+        <Postal_Code>7050</Postal_Code>
+        <Country>Australia</Country>
+      </Contact_Address>
+    </Personnel>
+  </Data_Center>
+  <Distribution>
+    <Distribution_Media>HTTP</Distribution_Media>
+    <Distribution_Size>41 kb</Distribution_Size>
+    <Distribution_Format>Excel</Distribution_Format>
+    <Fees>Free</Fees>
+  </Distribution>
+  <Reference>
+    <Author>Harrington, Philip</Author>
+    <Publication_Date>1999</Publication_Date>
+    <Title>Government Support for the Renewable Energy Industry in Australia.</Title>
+    <Series>Proceedings of the 1999 Australian Wind Energy Conference</Series>
+    <Other_Reference_Details>Keynote Address</Other_Reference_Details>
+  </Reference>
+  <Summary>
+    <Abstract>These data are no longer archived in the Australian Antarctic Data Centre.  These data cover a period of January 1993 to February 2016.
+
+INDICATOR DEFINITION
+The amount of electricity (kWh) used at Casey, Davis, Mawson and Macquarie Island stations as measured on a monthly basis and reported in the monthly reports from the Station Plant Inspectors to the Kingston (Head Office) Mechanical Supervisor.
+
+TYPE OF INDICATOR
+There are three types of indicators used in this report:
+1.Describes the CONDITION of important elements of a system;
+2.Show the extent of the major PRESSURES exerted on a system;
+3.Determine RESPONSES to either condition or changes in the condition of a system.
+
+This indicator is one of: PRESSURE
+
+RATIONALE FOR INDICATOR SELECTION
+The amount of electricity used at a station is a reflection of the efficiency of various electrical and systems and the amount of fuel used to generate this electricity.
+
+The amount of fuel used in Antarctica for electricity generation is proportional to environmental impact due to the emissions.
+
+The electricity usage of the station provides an indication of the relative need for electrical power compared with the thermal load of the station.
+
+DESIGN AND STRATEGY FOR INDICATOR MONITORING PROGRAM
+Spatial scale: Australian Antarctic stations: Casey (lat 66 deg 16' 54.5&amp; S, long 110 deg 31' 39.4&amp; E), Davis (lat 68 deg 34' 35.8&amp; S, long 77 deg 58' 02.6&amp; E), Mawson (lat 67 deg 36' 09.7&amp; S, long 62 deg 52' 25.7&amp; E) and Macquarie Island (lat 54 deg 37' 59.9&amp; S, long 158 deg 52' 59.9&amp; E).
+
+Frequency: Monthly reports
+
+Measurement technique: The figures are obtained by direct reading of gauges on the stations on a regular basis.  The data are recorded in the Plant Inspectors monthly reports.
+
+RESEARCH ISSUES
+In the future, it is planned to automate the collection of most of this data.
+
+LINKS TO OTHER INDICATORS
+SOE Indicator 1 - Monthly mean air temperatures at Australian Antarctic stations.
+SOE Indicator 2 - Highest monthly air temperatures at Australian Antarctic Stations
+SOE Indicator 3 - Lowest monthly air temperatures at Australian Antarctic Stations
+SOE Indicator 4 - Monthly mean lower stratospheric temperatures above Australian Antarctic Stations
+SOE Indicator 47 - Number and nature of incidents resulting in environmental impact
+SOE Indicator 48 - Station and ship person days
+SOE Indicator 56 - Monthly fuel usage of the generator sets and boilers</Abstract>
+  </Summary>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/soe/display_indicator.cfm?soe_id=56</URL>
+    <Description>Display Antarctic State of Environment Indicator 56</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/soe/display_indicator.cfm?soe_id=57</URL>
+    <Description>Display Antarctic State of Environment Indicator 57</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/soe/display_indicator.cfm?soe_id=58</URL>
+    <Description>Display Antarctic State of Environment Indicator 58</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/soe/display_indicator.cfm?soe_id=59</URL>
+    <Description>Display Antarctic State of Environment Indicator 59</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>GET DATA</Type>
+    </URL_Content_Type>
+    <URL>https://data.aad.gov.au/eds/4947/download</URL>
+    <Description>Download the dataset</Description>
+  </Related_URL>
+  <Related_URL>
+    <URL_Content_Type>
+      <Type>VIEW RELATED INFORMATION</Type>
+    </URL_Content_Type>
+    <URL>http://data.aad.gov.au/aadc/metadata/citation.cfm?entry_id=SOE_SFU</URL>
+    <Description>Citation reference for this metadata record and dataset</Description>
+  </Related_URL>
+  <IDN_Node>
+    <Short_Name>CEOS</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>AMD/AU</Short_Name>
+  </IDN_Node>
+  <IDN_Node>
+    <Short_Name>AMD</Short_Name>
+  </IDN_Node>
+  <Originating_Metadata_Node>AADC</Originating_Metadata_Node>
+  <Metadata_Name>CEOS IDN DIF</Metadata_Name>
+  <Metadata_Version>VERSION 9.9.3</Metadata_Version>
+  <DIF_Creation_Date>2001-05-17</DIF_Creation_Date>
+  <Last_DIF_Revision_Date>2019-07-25</Last_DIF_Revision_Date>
+  <DIF_Revision_History>2001-10-10, Summary update by CJD
+2001-10-23, Reference added CJD
+2001-12-27, Summary, title, and ID changed CJD
+2002-12-06, JWH moved analysis of indicator data to quality section.
+2005-08-03, DJC changed investigator from Chris Paterson to Jeremy Bonnice.
+2019-07-25 - record updated by Dave Connell - basic updates.</DIF_Revision_History>
+  <Extended_Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.uuid</Name>
+      <Value>762299ff-0c7f-490f-ab29-5c53da7f6eed</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.extraction_date</Name>
+      <Value>2019-07-25 10:10:27</Value>
+    </Metadata>
+    <Metadata>
+      <Group>gov.nasa.gsfc.gcmd</Group>
+      <Name>metadata.keyword_version</Name>
+      <Value>8.6</Value>
+    </Metadata>
+  </Extended_Metadata>
+</DIF>
